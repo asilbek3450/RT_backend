@@ -31,7 +31,6 @@ class LanguageChoices(models.Model):
 class User(AbstractUser):
 
     full_name = models.CharField(max_length=150, blank=True)
-    role = models.ManyToManyField("users.Role", through='users.UserRole')
     phone_number = models.CharField(max_length=12, validators=[phone_regex], blank=True, null=True, default=None)
     language = models.ForeignKey(LanguageChoices, on_delete=models.CASCADE, blank=True, null=True, default=None)
     balance = models.DecimalField(max_digits=11, decimal_places=4, default=0, null=True, blank=True)

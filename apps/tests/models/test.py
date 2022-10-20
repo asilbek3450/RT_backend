@@ -52,7 +52,7 @@ class Test(models.Model):
     language_id = models.ForeignKey("users.LanguageChoices", on_delete=models.CASCADE, null=True, blank=True)
     theme_id = models.ForeignKey("tests.Themes", on_delete=models.CASCADE, null=True, blank=True)
 
-    for_person_id = models.ForeignKey("users.HumanType", null=True, blank=True)
+    for_person_id = models.ForeignKey("users.HumanType", on_delete=models.CASCADE, null=True, blank=True)
     test_type = models.ForeignKey("tests.TestType", on_delete=models.CASCADE, null=True, blank=True)
 
     class Meta:

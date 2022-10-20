@@ -22,8 +22,8 @@ class BookType(models.Model):
 
 class Book(models.Model):
 
-    science1 = models.ManyToManyField(Science)
-    science2 = models.ManyToManyField(Science)
+    science1 = models.ForeignKey(Science, on_delete=models.CASCADE, null=True, blank=True, related_name='science1')
+    science2 = models.ForeignKey(Science, on_delete=models.CASCADE, null=True, blank=True, related_name='science2')
     language_id = models.ForeignKey("users.LanguageChoices", on_delete=models.CASCADE, null=True, blank=True)
     book_type = models.ForeignKey("books.BookType", on_delete=models.CASCADE, null=True, blank=True)
     is_free = models.BooleanField(default=True)
