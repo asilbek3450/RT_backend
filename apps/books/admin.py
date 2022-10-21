@@ -1,6 +1,7 @@
 from django.contrib import admin
-from books.models.book import Book, BookType
-from books.models.science import Science
+
+from .models.book import Book, BookType
+from .models.science import Science
 
 # Register your models here.
 admin.site.register(Book)

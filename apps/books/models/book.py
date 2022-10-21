@@ -1,6 +1,6 @@
 from django.db import models
 
-from books.models.science import Science
+from .science import Science
 
 
 # TypeBooks = (
