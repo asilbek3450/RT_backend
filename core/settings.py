@@ -11,10 +11,10 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
 import sys
-
+from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = Path(__file__).resolve().parent.parent
 sys.path.append(os.path.join(BASE_DIR, 'apps'))
 
 # Quick-start development settings - unsuitable for production
@@ -42,11 +42,11 @@ INSTALLED_APPS = [
     # third-party
 
     # custom apps
-    'books.apps.BooksConfig',
-    'users.apps.UsersConfig',
-    'tests.apps.TestsConfig',
-    'results.apps.ResultsConfig',
-    'connections.apps.ConnectionsConfig',
+    'books',
+    'users',
+    'tests',
+    'results',
+    'connections',
 
 ]
 

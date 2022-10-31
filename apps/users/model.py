@@ -1,7 +1,6 @@
-from django.contrib.auth.models import AbstractUser, BaseUserManager
+from django.contrib.auth.models import AbstractUser
 from django.core.validators import RegexValidator
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
 
 
 phone_regex = RegexValidator(
@@ -38,12 +37,9 @@ class User(AbstractUser):
     balance = models.DecimalField(max_digits=11, decimal_places=4, default=0, null=True, blank=True)
 
     invited_users = models.CharField(max_length=150, blank=True, null=True, default=None)
-    human_type = models.ForeignKey("users.HumanType", on_delete=models.PROTECT, null=True, blank=True)
+    human_type = models.ForeignKey(HumanType, on_delete=models.PROTECT, null=True, blank=True)
 
     class Meta:
-        app_label = 'users'
-        verbose_name = _('user')
-        verbose_name_plural = _('users')
         ordering = ['-id']
 
     def __str__(self):
