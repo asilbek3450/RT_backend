@@ -1,14 +1,17 @@
 from django.db import models
 
-from .science import Science
 
+# Create your models here.
 
-# TypeBooks = (
-#     ('0', 'Theme Test'),
-#     ('1', 'Block Test'),
-#     ('2', 'Attestation Test'),
-#     ('3', 'Online Test'),
-# )
+class Science(models.Model):
+    title = models.CharField(max_length=150, blank=True)
+
+    class Meta:
+        ordering = ['-id']
+
+    def __str__(self):
+        return self.title
+
 
 class BookType(models.Model):
     title = models.CharField(max_length=150, blank=True)
@@ -21,7 +24,6 @@ class BookType(models.Model):
 
 
 class Book(models.Model):
-
     science1 = models.ForeignKey(Science, on_delete=models.CASCADE, null=True, blank=True, related_name='science1')
     science2 = models.ForeignKey(Science, on_delete=models.CASCADE, null=True, blank=True, related_name='science2')
     language_id = models.ForeignKey("users.LanguageChoices", on_delete=models.CASCADE, null=True, blank=True)
@@ -33,5 +35,3 @@ class Book(models.Model):
 
     def __str__(self):
         return str(self.id)
-
-

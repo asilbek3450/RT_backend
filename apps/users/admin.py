@@ -1,7 +1,8 @@
 from django.contrib import admin
+from .models import HumanType, LanguageChoices, User
+# Register your models here.
 
-from users.model import LanguageChoices, HumanType, User
-
-admin.site.register(User)
 admin.site.register(HumanType)
 admin.site.register(LanguageChoices)
+admin.site.register(User)
+
