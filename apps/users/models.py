@@ -1,4 +1,4 @@
-from django.contrib.auth.models import AbstractUser, BaseUserManager
+from django.contrib.auth.models import AbstractUser
 from django.core.validators import RegexValidator
 from django.db import models
 
@@ -28,7 +28,7 @@ class LanguageChoices(models.Model):
         return str(self.title)
 
 
-class User(AbstractUser):
+class User(models.Model):
 
     full_name = models.CharField(max_length=150, blank=True)
     phone_number = models.CharField(max_length=12, validators=[phone_regex], blank=True, null=True, default=None)

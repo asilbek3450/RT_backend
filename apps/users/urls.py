@@ -1,10 +1,9 @@
-from rest_framework import routers
-# from views import MyObtainTokenPairView
-from rest_framework_simplejwt.views import TokenRefreshView
+from django.urls import path, include
 
-from users.views import UserViewSet
+from .views import UserListCreateView, HumanTypeListCreateView, LanguageChoiceListCreateView
 
-
-router = routers.SimpleRouter()
-router.register(r'users', UserViewSet)
-urlpatterns = router.urls
+urlpatterns = [
+    path('', UserListCreateView.as_view()),
+    path('human_type/', HumanTypeListCreateView.as_view()),
+    path('language/', LanguageChoiceListCreateView.as_view()),
+]

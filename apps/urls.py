@@ -1,6 +1,9 @@
 from django.urls import path, include
-# Apps urls
 
 urlpatterns = [
-    path('user/', include('users.urls', 'user')),
+    path('book/', include('books.urls')),
+    path('user/', include('users.urls')),
+    path('test/', include('tests.urls')),
+    path('connection/', include('connections.urls')),
+    path('result/', include('results.urls')),
 ]
