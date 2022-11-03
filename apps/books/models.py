@@ -4,7 +4,7 @@ from django.db import models
 # Create your models here.
 
 class Science(models.Model):
-    title = models.CharField(max_length=150, blank=True)
+    title = models.CharField(max_length=150, blank=False, null=False, unique=True)
 
     class Meta:
         ordering = ['-id']
@@ -31,7 +31,7 @@ class Book(models.Model):
     is_free = models.BooleanField(default=True)
 
     class Meta:
-        ordering = ['-id']
+        ordering = ['id']
 
     def __str__(self):
         return str(self.id)

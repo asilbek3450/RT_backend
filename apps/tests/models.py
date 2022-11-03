@@ -47,7 +47,7 @@ class Classes(models.Model):
 
 
 class Themes(models.Model):
-    name = models.CharField(max_length=150, blank=True)
+    name = models.CharField(max_length=150, blank=False, null=False, unique=True)
     class_id = models.ForeignKey(Classes, on_delete=models.CASCADE, null=True, blank=True)
     science_id = models.ForeignKey(Science, on_delete=models.CASCADE, null=True, blank=True)
 

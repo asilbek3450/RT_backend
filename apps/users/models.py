@@ -19,7 +19,7 @@ class HumanType(models.Model):
 
 
 class LanguageChoices(models.Model):
-    title = models.CharField(max_length=150, blank=True)
+    title = models.CharField(max_length=150, blank=False, null=False, unique=True)
 
     class Meta:
         ordering = ['-id']
@@ -31,7 +31,7 @@ class LanguageChoices(models.Model):
 class User(models.Model):
 
     full_name = models.CharField(max_length=150, blank=True)
-    phone_number = models.CharField(max_length=12, validators=[phone_regex], blank=True, null=True, default=None)
+    phone_number = models.CharField(max_length=12, validators=[phone_regex], null=False, blank=False, unique=True)
     language = models.ForeignKey(LanguageChoices, on_delete=models.CASCADE, blank=True, null=True, default=None)
     balance = models.DecimalField(max_digits=11, decimal_places=4, default=0, null=True, blank=True)
 
