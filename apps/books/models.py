@@ -24,9 +24,9 @@ class BookType(models.Model):
 
 
 class Book(models.Model):
-    science1 = models.ForeignKey(Science, on_delete=models.CASCADE, null=True, blank=True, related_name='science1')
-    science2 = models.ForeignKey(Science, on_delete=models.CASCADE, null=True, blank=True, related_name='science2')
-    language_id = models.ForeignKey("users.LanguageChoices", on_delete=models.CASCADE, null=True, blank=True)
+    science1 = models.ForeignKey(Science, on_delete=models.CASCADE, null=False, blank=False, related_name='science1')
+    science2 = models.ForeignKey(Science, on_delete=models.CASCADE, null=False, blank=False, related_name='science2')
+    language_id = models.ForeignKey("users.LanguageChoices", on_delete=models.CASCADE, null=False, blank=False)
     book_type = models.ForeignKey("books.BookType", on_delete=models.CASCADE, null=True, blank=True)
     is_free = models.BooleanField(default=True)
 
@@ -34,4 +34,4 @@ class Book(models.Model):
         ordering = ['id']
 
     def __str__(self):
-        return str(self.id)
+        return f'{self.id} {self.science1.title} - {self.science2.title}'

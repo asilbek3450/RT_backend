@@ -21,8 +21,6 @@ class BookTypeSerializer(ModelSerializer):
 
 
 class BookSerializer(ModelSerializer):
-    science1 = ScienceSerializer()
-    science2 = ScienceSerializer()
 
     class Meta:
         model = Book
@@ -30,3 +28,32 @@ class BookSerializer(ModelSerializer):
 
         read_only_fields = ['id']
 
+        depth = 1
+
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        representation['science1'] = instance.science1.title
+        representation['science2'] = instance.science2.title
+        return representation
+
+
+class BookCreateUpdateSerializer(ModelSerializer):
+
+    class Meta:
+        model = Book
+        fields = [
+            'id',
+            'science1',
+            'science2',
+            'language_id',
+            'book_type',
+            'is_free',
+        ]
+
+        read_only_fields = ['id']
+
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        representation['science1'] = instance.science1.title
+        representation['science2'] = instance.science2.title
+        return representation
