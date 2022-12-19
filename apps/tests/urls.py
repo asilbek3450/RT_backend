@@ -4,7 +4,7 @@ from .views import AnswerPictureView, AnswerView, TestPictureView, ClassesView, 
     TestRetrieveUpdateDestroyView
 
 urlpatterns = [
-    path('', TestView.as_view()),
+    path('', TestView.as_view({'get': 'list', 'post': 'create'})),
     path('<int:pk>', TestRetrieveUpdateDestroyView.as_view()),
     path('answer_picture/', AnswerPictureView.as_view()),
     path('answer/', AnswerView.as_view()),
