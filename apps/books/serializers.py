@@ -4,22 +4,61 @@ from rest_framework.serializers import ModelSerializer
 from books.models import Book, Science, BookType
 
 
-class BookSerializer(ModelSerializer):
-    science_1 = CharField(source='science1.title')
-    science_2 = CharField(source='science2.title')
-
-    class Meta:
-        model = Book
-        fields = ('id', 'science_1', 'science_2', 'language_id', 'book_type', 'is_free')
-
-
 class ScienceSerializer(ModelSerializer):
     class Meta:
         model = Science
         fields = '__all__'
 
+        read_only_fields = ['id']
+
 
 class BookTypeSerializer(ModelSerializer):
     class Meta:
         model = BookType
-        fields = ('id', 'title')
+        fields = ['id', 'title']
+
+        read_only_fields = ['id']
+
+
+class BookSerializer(ModelSerializer):
+
+    class Meta:
+        model = Book
+<<<<<<< HEAD
+        fields = ['id', 'science1', 'science2', 'language_id', 'book_type', 'is_free']
+=======
+        fields = [
+            'id',
+            'science1',
+            'science2',
+            'language_id',
+            'book_type',
+            'is_free',
+        ]
+>>>>>>> 33cbf808d42023ea498d45ebc9787868abeafc26
+
+        read_only_fields = ['id']
+
+        depth = 1
+
+
+class BookCreateUpdateSerializer(ModelSerializer):
+
+    class Meta:
+        model = Book
+        fields = [
+            'id',
+            'science1',
+            'science2',
+            'language_id',
+            'book_type',
+            'is_free',
+        ]
+
+        read_only_fields = ['id']
+
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        representation['science1'] = instance.science1.title
+        representation['science2'] = instance.science2.title
+        return representation
