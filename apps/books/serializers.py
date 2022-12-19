@@ -15,7 +15,7 @@ class ScienceSerializer(ModelSerializer):
 class BookTypeSerializer(ModelSerializer):
     class Meta:
         model = BookType
-        fields = ('id', 'title')
+        fields = ['id', 'title']
 
         read_only_fields = ['id']
 
@@ -24,7 +24,7 @@ class BookSerializer(ModelSerializer):
 
     class Meta:
         model = Book
-        fields = ('id', 'science1', 'science2', 'language_id', 'book_type', 'is_free')
+        fields = ['id', 'science1', 'science2', 'language_id', 'book_type', 'is_free']
 
         read_only_fields = ['id']
 
